@@ -1,0 +1,10 @@
+nav {
+    padding: 1em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 2em;
+}

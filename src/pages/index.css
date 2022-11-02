@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+button {
+    cursor: pointer;
+}
+
+.main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.main h1 {
+    font-size: 3em;
+    color: rgb(255, 255, 255);
+    margin: .5em auto;
+}
+
+.main h2 {
+    color: #fff;
+}
+
+.main p {
+    font-size: 1.3em;
+    color: #fff;
+}
+
+.main .connect-btn {
+    max-width: 200px;
+    margin: 2em auto;
+    display: block;
+    outline: none;
+    padding: 1em;
+    font-size: 1em;
+    font-family: 'Encanto';
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form label {
+    color: #fff;
+}
+
+input {
+    margin-top: .2em;
+    padding: 5px 2px;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(0, 0, 0);
+    text-transform: none !important;
+}
+
+.form div {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: .3em 1em;
+    margin: 1em auto;
+}
+
+.form div button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.4em;
+    color: rgb(0, 0, 0);
+}
+
+
+.captcha-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.captcha-wrap p {
+    margin-bottom: 1em;
+}
+
+.captcha-wrap textarea {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #000000;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    width: 60%;
+    margin-bottom: 1.6em;
+    max-width: 500px;
+    min-height: 400px;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+}
+
+.captcha-wrap input {
+    border-radius: 2px;
+    padding: .4em .6em;
+}
+
+.loader {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.loader .overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.loader .video {
+    z-index: 1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+.loader button {
+    max-width: 200px;
+    margin: 2em auto;
+    display: block;
+    outline: none;
+    padding: 1em;
+    font-size: 1.4em;
+    font-family: 'Encanto';
+    background-color: rgb(220, 41, 19);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+    .main h1 {
+        font-size: 1.2em;
+    }
+}
