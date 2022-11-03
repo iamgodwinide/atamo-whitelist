@@ -140,7 +140,7 @@ const Home = () => {
                         step === 2
                         && <div className='puzzle-wrap'>
                             <p>Solve The Puzzle Below To Continue: </p>
-                            <img src="puzzle.png" className="puzzle" />
+                            <img src="/puzzle.png" className="puzzle" />
                             <input placeholder='Enter the answer here' value={answer}
                                 onInput={e => setAnswer(e.target.value)}
                             />
