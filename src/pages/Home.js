@@ -30,18 +30,6 @@ const Home = () => {
         else alert.error("Invalid key")
     }
 
-    // const handleTweet = () => {
-    //     if (code) {
-    //         const tweetContent = `%0A%0AThe Key has been submitted %0A%0AMay polis guide me`
-    //         const link = `https://twitter.com/intent/tweet?text=${tweetContent}&url=https://atamoascension.xyz`;
-    //         window.open(link, "_blank");
-    //     } else {
-    //         alert.error(error);
-    //         setStep(1);
-    //     }
-    // }
-
-
     const generateCode = async () => {
         try {
             const req = await axios.get(`https://atamoascension.xyz/api/code-generate/${account}`);
@@ -92,7 +80,9 @@ const Home = () => {
 
     useEffect(() => {
         window.addEventListener('load', function () {
-            sefontLoading(false);
+            setTimeout(() => {
+                sefontLoading(false);
+            }, 1000)
         })
         setTimeout(() => {
             sefontLoading(false);
@@ -127,7 +117,7 @@ const Home = () => {
                 }
             </div>
             : <div>
-                {/* <Header audio={audio} setMuted={setMuted} /> */}
+                <Header audio={audio} setMuted={setMuted} />
                 <audio preload='true' src='/Atamo.mp3' ref={audio} />
                 <div className='main'>
                     <h1>Enter while the gate is still open.</h1>

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import 'toolcool-range-slider';
 
 const Slider = ({ setMuted, audio }) => {
 
