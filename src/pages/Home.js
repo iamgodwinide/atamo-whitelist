@@ -4,7 +4,6 @@ import './index.css'
 import Header from '../components/Header'
 import { useAlert } from 'react-alert'
 import axios from 'axios';
-import '@react-pdf-viewer/core/lib/styles/index.css';
 import { Progress } from 'reactstrap';
 
 const Home = () => {
