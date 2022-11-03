@@ -127,7 +127,7 @@ const Home = () => {
                 }
             </div>
             : <div>
-                <Header audio={audio} setMuted={setMuted} />
+                {/* <Header audio={audio} setMuted={setMuted} /> */}
                 <audio preload='true' src='/Atamo.mp3' ref={audio} />
                 <div className='main'>
                     <h1>Enter while the gate is still open.</h1>
