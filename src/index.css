@@ -14,8 +14,10 @@
 }
 
 body {
-  font-family: 'Encanto';
+  font-family: 'Encanto' !important;
   background: rgb(220, 41, 19);
   background: linear-gradient(132deg, rgba(220, 41, 19, 1) 0%, rgba(220, 19, 82, 1) 100%);
+
   min-height: 100vh;
+  overflow-x: hidden;
 }
