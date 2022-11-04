@@ -1,0 +1,22 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    background-color: rgb(0, 0, 0);
+}
+
+footer img {
+    width: 10em;
+}
+
+footer ul {
+    display: flex;
+    list-style: none;
+    width: 300px;
+    justify-content: space-between;
+    margin: 0 auto;
+}

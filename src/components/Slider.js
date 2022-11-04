@@ -25,7 +25,7 @@ const Slider = ({ setMuted, audio }) => {
     return (
 
         <div className="speaker-wrap">
-            <i class="fas fa-volume-up fa-2x mr-1" style={{ marginRight: ".3em", color: "#000" }}></i>
+            <i class="fas fa-volume-up fa-2x mr-1" style={{ marginRight: ".3em", color: "#e74525" }}></i>
             <toolcool-range-slider
                 slider-width="300px"
                 slider-height="10px"
@@ -33,10 +33,10 @@ const Slider = ({ setMuted, audio }) => {
                 slider-radius="1rem"
                 pointer-width="1.2em"
                 pointer-height="1.2em"
-                pointer-bg="#fff"
-                pointer-bg-hover="#fff"
-                pointer-bg-focus="#fff"
-                slider-bg="#fff"
+                pointer-bg="#e74525"
+                pointer-bg-hover="#e74525"
+                pointer-bg-focus="#e74525"
+                slider-bg="#e74525"
                 slider-bg-fill="#181818"
                 value={volume}
                 ref={rangeSliderRef}

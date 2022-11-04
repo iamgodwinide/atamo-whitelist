@@ -1,5 +1,5 @@
 nav {
-    padding: 1em;
+    padding: 0 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,16 +12,24 @@ nav a {
     font-size: 2em;
 }
 
+nav .logo {
+    width: 10em;
+    margin-top: -2.5em;
+}
+
 .speaker-wrap {
     display: flex;
     align-items: center;
+    margin-top: -2.5em;
+
 }
 
 .speaker-wrap i {
-    color: #fff !important;
+    color: #e74525 !important;
+
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
     nav {
         flex-direction: column;
         justify-content: center;
@@ -33,7 +41,8 @@ nav a {
     }
 
     .speaker-wrap {
-        width: 50%;
+        width: 80%;
         margin: 0;
+        margin-top: -1.3em;
     }
 }

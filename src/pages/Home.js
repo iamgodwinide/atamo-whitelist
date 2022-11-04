@@ -4,11 +4,10 @@ import './index.css'
 import Header from '../components/Header'
 import { useAlert } from 'react-alert'
 import axios from 'axios';
-import { Progress } from 'reactstrap';
 
 const Home = () => {
     const alert = useAlert();
-    const [account, setAccount] = useState(null);
+    const [account, setAccount] = useState("");
     const [personalKey, setPersonalKey] = useState("");
     const [step, setStep] = useState(1);
     const [code, setCode] = useState("");
@@ -18,14 +17,16 @@ const Home = () => {
     const [fontLoading, sefontLoading] = useState(true);
     const [answer, setAnswer] = useState("");
     const [muted, setMuted] = useState(false);
-    const videoPlayer = useRef();
     const audio = useRef();
+    const bg1 = useRef();
+    const bg2 = useRef();
+    const bgVideo = useRef();
+    const video = useRef();
 
 
     const validateKey = () => {
         if (personalKey.length === 9) {
-            setStep(2);
-            audio.current.play();
+            handleStartVideo();
         }
         else alert.error("Invalid key")
     }
@@ -45,13 +46,18 @@ const Home = () => {
         }
     }
 
-    const handlePlay = () => {
-        videoPlayer.current.style.zIndex = 3;
-        videoPlayer.current.play();
+    const handleEnd = () => {
+        console.log("here")
+        bgVideo.current.style.display = "none";
+        bg2.current.style.zIndex = "-1";
+        bg1.current.style.zIndex = "-2";
+        setStep(2);
+        audio.current.play();
     }
 
-    const handleEnd = () => {
-        setLoading(false);
+    const handleStartVideo = () => {
+        bgVideo.current.style.zIndex = "210";
+        video.current.play();
     }
 
     const handleAnswer = async () => {
@@ -62,6 +68,7 @@ const Home = () => {
             setFetching(false);
             if (res.success) {
                 setStep(3);
+                audio.current.pause();
             } else {
                 alert.error("Incorrect answer");
             }
@@ -77,7 +84,6 @@ const Home = () => {
         setStep(4);
     }
 
-
     useEffect(() => {
         window.addEventListener('load', function () {
             setTimeout(() => {
@@ -91,92 +97,74 @@ const Home = () => {
 
 
     return (
-        loading
-            ? <div className='loader'>
-                {
-                    fontLoading
-                        ?
-                        <div className='loading-wrap'>
-                            <Progress
-                                animated
-                                className="my-3"
-                                color="danger"
-                                value="100"
-                                style={{
-                                    width: "40%",
-                                    height: "1.7em"
-                                }}
-                            />
-                        </div>
-                        : <>
-                            <video src='/gate.mp4' preload='true' onEnded={handleEnd} ref={videoPlayer} className='video' />
-                            <div className='overlay'>
-                                <button onClick={handlePlay}>click to enter</button>
-                            </div>
-                        </>
-                }
+        <div>
+            <Header audio={audio} setMuted={setMuted} />
+            <div className='bg1' ref={bg1} />
+            <div className='bg2' ref={bg2} />
+            <div className='bg-video' ref={bgVideo}>
+                <video src='/Gates_to_Polis.mp4' ref={video} onEnded={handleEnd} />
             </div>
-            : <div>
-                <Header audio={audio} setMuted={setMuted} />
-                <audio preload='true' src='/Atamo.mp3' ref={audio} />
-                <div className='main'>
-                    <h1>Enter while the gate is still open.</h1>
-                    {
-                        step === 1
-                        && <div className='form'>
-                            <label>Enter your personal key to proceed:</label>
-                            <div>
-                                <input
-                                    value={personalKey}
-                                    onInput={e => setPersonalKey(e.target.value)}
-                                />
-                                <button onClick={validateKey}>
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    }
-                    {
-                        step === 2
-                        && <div className='puzzle-wrap'>
-                            <p>Solve The Puzzle Below To Continue: </p>
-                            <img src="/puzzle.png" className="puzzle" />
-                            <input placeholder='Enter the answer here' value={answer}
-                                onInput={e => setAnswer(e.target.value)}
+            <audio preload='true' src='/Atamo.mp3' ref={audio} />
+            <div className='main'>
+                {
+                    step === 1
+                    && <div className='form'>
+                        <h3>Enter your personal key to proceed:</h3>
+                        <div>
+                            <input
+                                value={personalKey}
+                                onInput={e => setPersonalKey(e.target.value)}
                             />
-                            <button className='connect-btn' onClick={handleAnswer} disabled={fetching}>
-                                {
-                                    fetching
-                                        ? "please wait..."
-                                        : "confirm"
-                                }
+                            <button onClick={validateKey}>
+                                <i className="fas fa-arrow-right"></i>
                             </button>
                         </div>
-                    }
-                    {
-                        step === 3
-                        && <div className='form2'>
-                            <label>Final Step Enter the address to be whitelisted:</label>
-                            <div>
-                                <input
-                                    value={account}
-                                    onInput={e => setAccount(e.target.value)}
-                                />
-                                <button onClick={submitAddress}>
-                                    submit
-                                </button>
-                            </div>
-                        </div>
-                    }
-                    {
-                        step === 4
-                        &&
+                    </div>
+                }
+                {
+                    step === 2
+                    && <div className='puzzle-wrap puzzle-container'>
+                        <h3>Solve The Puzzle Below To Continue: </h3>
+                        <img src="/puzzle.png" className="puzzle" />
+                        <input placeholder='Enter the answer here' value={answer}
+                            onInput={e => setAnswer(e.target.value)}
+                        />
+                        <button className='connect-btn' onClick={handleAnswer} disabled={fetching}>
+                            {
+                                fetching
+                                    ? "please wait..."
+                                    : "confirm"
+                            }
+                        </button>
+                    </div>
+                }
+                {
+                    step === 3
+                    && <div className='form2'>
+                        <h3>Congratulations, you have made it through the gates!</h3>
+                        <br />
+                        <h4>Enter your minting address to be added to the AtamoList.</h4>
                         <div>
-                            <h2>The Key has been submitted</h2>
+                            <input
+                                value={account}
+                                placeholder="0x..."
+                                onInput={e => setAccount(e.target.value)}
+                            />
+                            <button onClick={submitAddress}>
+                                submit
+                            </button>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
+                {
+                    step === 4
+                    &&
+                    <div className='last'>
+                        <h2>Your address has been whitelisted</h2>
+                    </div>
+                }
             </div>
+        </div >
     )
 }
 

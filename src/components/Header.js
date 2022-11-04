@@ -5,7 +5,7 @@ import Slider from './Slider'
 const Header = ({ audio, setMuted }) => {
     return (
         <nav>
-            <a href="#">Gates of polis</a>
+            <img className='logo' src='/LOGO 2.png' />
             <Slider audio={audio} setMuted={setMuted} />
         </nav>
     )
