@@ -117,7 +117,7 @@ const Home = () => {
             <div className='bg-video' ref={bgVideo}>
                 <video src='/Gates_to_Polis.mp4' ref={video} onEnded={handleEnd} />
             </div>
-            <audio preload='true' src='/Atamo_Ascension_audio_reversed.wav' ref={audio} />
+            <audio preload='true' loop="true" src='/Atamo_Ascension_audio_reversed.wav' ref={audio} />
             <div className='main'>
                 {
                     step === 1
