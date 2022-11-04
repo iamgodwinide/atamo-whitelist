@@ -49,7 +49,6 @@ const Home = () => {
     }
 
     const handleEnd = () => {
-        console.log("here")
         bgVideo.current.style.display = "none";
         bg2.current.style.zIndex = "-1";
         bg1.current.style.zIndex = "-2";
@@ -106,16 +105,19 @@ const Home = () => {
 
     return (
         <div>
+            <Header audio={audio} setMuted={setMuted} step={step} />
             {
                 step !== 2
-                && <Header audio={audio} setMuted={setMuted} />
+                &&
+                <>
+                    <div className='bg1' ref={bg1} />
+                    <div className='bg2' ref={bg2} />
+                </>
             }
-            <div className='bg1' ref={bg1} />
-            <div className='bg2' ref={bg2} />
             <div className='bg-video' ref={bgVideo}>
                 <video src='/Gates_to_Polis.mp4' ref={video} onEnded={handleEnd} />
             </div>
-            <audio preload='true' src='/Atamo.mp3' ref={audio} />
+            <audio preload='true' src='/Atamo_Ascension_audio_reversed.wav' ref={audio} />
             <div className='main'>
                 {
                     step === 1
@@ -135,9 +137,8 @@ const Home = () => {
                 {
                     step === 2
                     && <div className='puzzle-wrap puzzle-container'>
-                        <h3>Solve The Puzzle Below To Continue: </h3>
                         <video src="/Puzzle.mp4" ref={puzzleVideo} autoPlay muted className="p-video" />
-                        <input placeholder='Enter the answer here' value={answer}
+                        <input placeholder='Enter trial answer' value={answer}
                             onInput={e => setAnswer(e.target.value)}
                         />
                         <button className='connect-btn' onClick={handleAnswer} disabled={fetching}>
