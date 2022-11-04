@@ -81,7 +81,7 @@ const Home = () => {
     }
 
     const handletweet = () => {
-        const tweetContent = `I have solved the first @AtamoAscension trial and ascended.%0A%0ANew keys available soon.%0A%0Ahttps://atamoascension.xyz`
+        const tweetContent = `I have solved the first @AtamoAscension trial and ascended.%0A%0ANew keys available soon.`
         const link = `https://twitter.com/intent/tweet?text=${tweetContent}&url=https://atamoascension.xyz`;
         window.open(link, "_blank");
     }
