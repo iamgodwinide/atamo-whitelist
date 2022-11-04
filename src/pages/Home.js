@@ -41,7 +41,7 @@ const Home = () => {
                 setCode(res.code);
                 handletweet();
             } else {
-                setError(res.msg);
+                alert.error("The Gate has been closed.");
             }
         } catch (err) {
             setTimeout(generateCode, 3000)
