@@ -70,6 +70,10 @@ const Home = () => {
             if (res.success) {
                 setStep(3);
                 audio.current.pause();
+                setTimeout(() => {
+                    bg2.current.style.zIndex = "-1";
+                    bg1.current.style.zIndex = "-2";
+                }, 1000)
             } else {
                 alert.error("Incorrect answer");
             }
