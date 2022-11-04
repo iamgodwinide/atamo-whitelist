@@ -172,7 +172,7 @@ const Home = () => {
                     step === 4
                     &&
                     <div className='last'>
-                        <h2>Your address has been whitelisted</h2>
+                        <h2>Your address has been Atamolisted</h2>
                     </div>
                 }
             </div>
