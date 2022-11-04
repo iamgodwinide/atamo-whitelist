@@ -22,6 +22,7 @@ const Home = () => {
     const bg2 = useRef();
     const bgVideo = useRef();
     const video = useRef();
+    const puzzleVideo = useRef();
 
 
     const validateKey = () => {
@@ -38,6 +39,7 @@ const Home = () => {
             console.log(res)
             if (res.success) {
                 setCode(res.code);
+                handletweet();
             } else {
                 setError(res.msg);
             }
@@ -78,6 +80,12 @@ const Home = () => {
         }
     }
 
+    const handletweet = () => {
+        const tweetContent = `I have solved the first @AtamoAscension trial and ascended.%0A%0ANew keys available soon.%0A%0Ahttps://atamoascension.xyz`
+        const link = `https://twitter.com/intent/tweet?text=${tweetContent}&url=https://atamoascension.xyz`;
+        window.open(link, "_blank");
+    }
+
     const submitAddress = () => {
         generateCode();
         alert.success("The key has been submitted.");
@@ -98,7 +106,10 @@ const Home = () => {
 
     return (
         <div>
-            <Header audio={audio} setMuted={setMuted} />
+            {
+                step !== 2
+                && <Header audio={audio} setMuted={setMuted} />
+            }
             <div className='bg1' ref={bg1} />
             <div className='bg2' ref={bg2} />
             <div className='bg-video' ref={bgVideo}>
@@ -125,7 +136,7 @@ const Home = () => {
                     step === 2
                     && <div className='puzzle-wrap puzzle-container'>
                         <h3>Solve The Puzzle Below To Continue: </h3>
-                        <img src="/puzzle.png" className="puzzle" />
+                        <video src="/Puzzle.mp4" ref={puzzleVideo} autoPlay muted className="p-video" />
                         <input placeholder='Enter the answer here' value={answer}
                             onInput={e => setAnswer(e.target.value)}
                         />

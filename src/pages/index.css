@@ -249,18 +249,15 @@ button {
     border-radius: 10px;
 }
 
-.puzzle {
-    width: 90vw;
-}
-
 .puzzle-container {
-    background-color: rgba(0, 0, 0, 0.507);
-    margin-top: 4em;
+    background-color: rgb(255, 255, 255);
     padding: 3em;
+    margin-top: -5em;
+    z-index: 20;
 }
 
 .puzzle-container h3 {
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .puzzle-container button {
@@ -273,7 +270,7 @@ button {
     padding: 1em .6em;
     font-size: 1em;
     margin-top: 1em;
-    border: none;
+    border: 1px solid #000;
     border-radius: 10px;
     outline: none;
     width: 40%;
@@ -281,6 +278,12 @@ button {
 
 .puzzle-wrap button {
     width: 100%;
+}
+
+.p-video {
+    width: 100%;
+    object-fit: cover;
+
 }
 
 .loading-wrap {
@@ -330,6 +333,7 @@ input {
     .form div {
         padding: 0;
     }
+
 
     .puzzle-wrap input {
         width: 100%;
