@@ -71,8 +71,8 @@ const Home = () => {
                 setStep(3);
                 audio.current.pause();
                 setTimeout(() => {
-                    bg2.current.style.zIndex = "-1";
-                    bg1.current.style.zIndex = "-2";
+                    // bg2.current.style.zIndex = "-1";
+                    // bg1.current.style.zIndex = "-2";
                 }, 1000)
             } else {
                 alert.error("Incorrect answer");
@@ -90,9 +90,10 @@ const Home = () => {
     }
 
     const submitAddress = () => {
-        generateCode();
-        alert.success("The key has been submitted.");
-        setStep(4);
+        handletweet();
+        // generateCode();
+        // alert.success("The key has been submitted.");
+        // setStep(4);
     }
 
     useEffect(() => {
@@ -157,17 +158,10 @@ const Home = () => {
                 {
                     step === 3
                     && <div className='form2'>
-                        <h3>Congratulations, you have made it through the gates!</h3>
-                        <br />
-                        <h4>Enter your minting address to be added to the AtamoList.</h4>
+                        <h3>The AtamoList is closed for now, but tweeting out that you solved the trial could still land you an AtamoList spot.</h3>
                         <div>
-                            <input
-                                value={account}
-                                placeholder="0x..."
-                                onInput={e => setAccount(e.target.value)}
-                            />
                             <button onClick={submitAddress}>
-                                submit
+                                Tweet
                             </button>
                         </div>
                     </div>
